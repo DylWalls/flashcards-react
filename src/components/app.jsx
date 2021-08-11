@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios  from 'axios';
 import SideNavBar from './SideNavBar/sideNavBar';
 
+import './app.css';
 
 class App extends Component {
     state = { 
@@ -30,7 +31,7 @@ class App extends Component {
                 <div>
                     {this.state.deck.map((deck, index) => (
                         <p key={index}>
-                            {deck.id}:"{deck.name}", {deck.description},<i>{deck.category}</i>
+                           {deck.name}: <i>{deck.category}</i> {deck.description}
                         </p>
                     )
                     )}
