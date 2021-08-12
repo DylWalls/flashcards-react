@@ -1,23 +1,19 @@
 import React from 'react';
 
-
-
-
-function Card(props){
-
+function Card(deck){
     return(
-         <div>
-             {app.state.deck((deck, index) => (
-                <p className="card-info"key={index}>
-                     <p/>Card #{deck.name}: Category: <i>{deck.category}</i>
-                     <p/> Question: {deck.question}  
-                     <p/>Answer: {deck.answer} 
-                     <p/>Why? {deck.explanation}
-                </p>
-                )
-            )}
-        </div>
-    )
- }
+        <div>
+             <p className="card-info">
+                 <p/>Card #{deck.name}: Category: <i>{deck.category}</i>
+                 <p/> Question: {deck.question}  
+                 <p/>Answer: {deck.answer} 
+                 <p/>Why? {deck.explanation}
+            </p>
+        );
+    </div>
+        
+)
+}
 
- export default Card;
+
+export default Card;
