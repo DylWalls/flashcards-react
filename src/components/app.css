@@ -14,4 +14,22 @@
 .row-spacer {
     margin-bottom: 2em;
     }
-    
+
+body {
+    background-image: url("../components/assets/background.jpg");
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    }
+
+.card-info{
+    font-size: 30px;
+    font-family: cursive;
+    color: white;
+}

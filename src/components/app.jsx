@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
 import SideNavBar from './SideNavBar/sideNavBar';
-
+import Footer from './Footer/footer';
 import './app.css';
 
 class App extends Component {
@@ -30,12 +30,15 @@ class App extends Component {
                 <SideNavBar/>
                 <div>
                     {this.state.deck.map((deck, index) => (
-                        <p key={index}>
-                           {deck.name}: <i>{deck.category}</i> {deck.description}
+                        <p className="card-info" key={deck.id}>
+                           <p/>Card #{deck.name}: Category: <i>{deck.category}</i>
+                          <p/> Question: {deck.question}  <p/>Answer: {deck.answer} 
+                           <p/>Why? {deck.explanation}
                         </p>
                     )
                     )}
                 </div>
+                <Footer/>
             </div>
         );
     }
