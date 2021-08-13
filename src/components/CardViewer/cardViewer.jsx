@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/card';
+import './cardViewer.css';
 
 
 
@@ -12,7 +13,7 @@ function CardViewer(props){
         <div className="col-md-4">
             <Card card={props.card}/>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 button">
             <button onClick={() => props.nextCard()}>Next Card</button>
         </div>
     </div>

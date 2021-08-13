@@ -1,5 +1,6 @@
 .dropdown-submenu {
-    position: relative;
+    text-align: right;
+    position: fixed;
 }
 
 .dropdown-submenu>.dropdown-menu {
@@ -44,4 +45,15 @@
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
+}
+
+.dropdown {
+    font-family: cursive;
+    font-size: 23px;
+    text-align: left;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
 }

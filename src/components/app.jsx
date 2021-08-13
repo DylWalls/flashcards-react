@@ -41,7 +41,7 @@ addNewCard(card){
 goToNextCard(){
     let tempCardNumber = this.state.cardNumber;
     tempCardNumber++;
-    if(tempCardNumber === this.flashcards.length){
+    if(tempCardNumber === this.state.flashcards.length){
         tempCardNumber = 0;
     }
     this.setState({
@@ -53,7 +53,7 @@ goToPreviousCard(){
     let tempCardNumber = this.state.cardNumber;
     tempCardNumber--;
     if(tempCardNumber < 0)
-        tempCardNumber = this.flashcards.length -1;
+        tempCardNumber = this.state.flashcards.length -1;
     this.setState({
         cardNumber: tempCardNumber
     });
@@ -71,7 +71,7 @@ goToPreviousCard(){
         return (
             <div className="container-fluid">
                 <SideNavBar/> <br/>
-                <CardViewer card={this.flashcards[this.state.cardNumber]} nextCard={() => this.goToNextCard()} previousCard={() => this.goToPreviousCard()}/>
+                <CardViewer Card={this.state.flashcards[this.state.cardNumber]} nextCard={() => this.goToNextCard()} previousCard={() => this.goToPreviousCard()}/>
                 <Footer/>
             </div>
         );
