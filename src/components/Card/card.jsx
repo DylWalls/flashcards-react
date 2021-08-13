@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Card(deck){
+function Card(props){
     return(
         <div>
              <p className="card-info">
-                 <p/>Card #{deck.name}: Category: <i>{deck.category}</i>
-                 <p/> Question: {deck.question}  
-                 <p/>Answer: {deck.answer} 
-                 <p/>Why? {deck.explanation}
+                 <p/>Card #{props.name}: Category: <i>{props.category}</i>
+                 <p/> Question: {props.question}  
+                 <p/>Answer: {props.answer} 
+                 <p/>Why? {props.explanation}
             </p>
         );
     </div>

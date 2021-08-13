@@ -8,9 +8,10 @@ import CardViewer from './CardViewer/cardViewer';
 class App extends Component {
     constructor(props){
     super(props);
-    this.flashcards = []
     this.state = { 
-        deck: []
+        deck: [],
+        flashcards: [],
+        cardNumber: 0
     }
 }
 componentDidMount(){
@@ -18,7 +19,7 @@ componentDidMount(){
 }
 async getFlashCardsDB(){
     try{
-        let response = await axios.get('http://localhost:5000/api/deck/');
+        let response = await axios.get('http://localhost:5000/api/decks/');
         console.log(response.data);
         console.log(response.data[0])
         this.setState({
@@ -30,33 +31,33 @@ async getFlashCardsDB(){
     }
 }
 
-// addNewCard(card){
-//     this.flashcards.push(card);
-//     this.setState({
-//         cardNumber: this.flashcards.length - 1
-//     });
-// }
+addNewCard(card){
+    this.flashcards.push(card);
+    this.setState({
+        cardNumber: this.flashcards.length - 1
+    });
+}
 
-// goToNextCard(){
-//     let tempCardNumber = this.state.cardNumber;
-//     tempCardNumber++;
-//     if(tempCardNumber === this.flashcards.length){
-//         tempCardNumber = 0;
-//     }
-//     this.setState({
-//         cardNumber: tempCardNumber
-//     });
-// }
+goToNextCard(){
+    let tempCardNumber = this.state.cardNumber;
+    tempCardNumber++;
+    if(tempCardNumber === this.flashcards.length){
+        tempCardNumber = 0;
+    }
+    this.setState({
+        cardNumber: tempCardNumber
+    });
+}
 
-// goToPreviousCard(){
-//     let tempCardNumber = this.state.cardNumber;
-//     tempCardNumber--;
-//     if(tempCardNumber < 0)
-//         tempCardNumber = this.flashcards.length -1;
-//     this.setState({
-//         cardNumber: tempCardNumber
-//     });
-// }
+goToPreviousCard(){
+    let tempCardNumber = this.state.cardNumber;
+    tempCardNumber--;
+    if(tempCardNumber < 0)
+        tempCardNumber = this.flashcards.length -1;
+    this.setState({
+        cardNumber: tempCardNumber
+    });
+}
 
     handleChange(e){
         this.setState({
