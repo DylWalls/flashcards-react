@@ -25,9 +25,9 @@ async getFlashCardsDB(){
         let response = await axios.get('http://localhost:5000/api/decks/');
         console.log(response.data);
         console.log(response.data[0])
-        this.setState({
+        this.setState([{
             deck: response.data
-        });
+        }]);
     }
     catch(ex) {
         console.log('Error in API call!');
@@ -101,6 +101,9 @@ handleChange(e){
             <div className="container-fluid">
                 <CardViewer
                     Card={this.state.deck[this.state.cardNumber]} nextCard={() => this.goToNextCard()} previousCard={() => this.goToPreviousCard()}/>
+                    <p>
+                        {this.state.deck[0]}
+                    </p>
                 <DeckViewer
                     Deck={this.state.collection[this.state.deckNumber]} nextDeck={() => this.goToNextDeck()} previousDeck={() => this.goToPreviousDeck()}/>
                 <Footer/>
