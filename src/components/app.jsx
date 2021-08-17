@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
-import SideNavBar from './SideNavBar/sideNavBar';
+import DeckViewer from './DeckViewer/deckViewer';
 import Footer from './Footer/footer';
 import './app.css';
 import CardViewer from './CardViewer/cardViewer';
@@ -8,10 +8,13 @@ import CardViewer from './CardViewer/cardViewer';
 class App extends Component {
     constructor(props){
     super(props);
-    this.state = { 
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+        collection: [],
         deck: [],
         flashcards: [],
-        cardNumber: 0
+        cardNumber: 0,
+        deckNumber: 0
     }
 }
 componentDidMount(){
@@ -29,6 +32,32 @@ async getFlashCardsDB(){
     catch(ex) {
         console.log('Error in API call!');
     }
+}
+
+addNewDeck(deck){
+    this.collection.push(deck);
+    this.setState({
+        deckNumber: this.collection.length - 1
+    });
+}
+goToNextDeck(){
+    let tempDeckNumber = this.state.deckNumber;
+    tempDeckNumber++;
+    if(tempDeckNumber === this.state.collection.length){
+        tempDeckNumber = 0;
+    }
+    this.setState({
+        deckNumber: tempDeckNumber
+    });
+}
+goToPreviousDeck(){
+    let tempDeckNumber = this.state.deckNumber;
+    tempDeckNumber--;
+    if(tempDeckNumber < 0)
+        tempDeckNumber = this.state.collection.length -1;
+    this.setState({
+        deckNumber: tempDeckNumber
+    });
 }
 
 addNewCard(card){
@@ -59,19 +88,21 @@ goToPreviousCard(){
     });
 }
 
-    handleChange(e){
-        this.setState({
+handleChange(e){
+    this.setState({
             userInput: e.target.value
-        });
-            console.log(e.target.value)
+    });
+            console.log(this.target.value)
     }
     
     render() {
-        const userInput = this.state.userInput;
+        // const userInput = this.state.userInput;
         return (
             <div className="container-fluid">
-                <SideNavBar/> <br/>
-                <CardViewer Card={this.state.flashcards[this.state.cardNumber]} nextCard={() => this.goToNextCard()} previousCard={() => this.goToPreviousCard()}/>
+                <CardViewer
+                    Card={this.state.deck[this.state.cardNumber]} nextCard={() => this.goToNextCard()} previousCard={() => this.goToPreviousCard()}/>
+                <DeckViewer
+                    Deck={this.state.collection[this.state.deckNumber]} nextDeck={() => this.goToNextDeck()} previousDeck={() => this.goToPreviousDeck()}/>
                 <Footer/>
             </div>
         );
